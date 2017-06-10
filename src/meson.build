@@ -1,8 +1,13 @@
 project('nexmo-cpp', 'cpp')
 
 gtest = dependency('gtest')
+curlpp = dependency('curlpp')
 nlohmann_json_sp = subproject('nlohmann_json')
 
+clientsrc = [
+    'client/post.cpp'
+]
+client = shared_library('client', clientsrc, dependencies: [ curlpp ], cpp_args: '-fPIC')
 
 nexmosrc = [
    'nexmo/send_sms.cpp'

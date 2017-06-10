@@ -9,16 +9,17 @@ private:
     std::string key;
     std::string secret;
 
-    Nexmo ();
-    Nexmo (std::string api_key, std::string api_secret);
-
-    class message {
+    struct Client {
+        void post (std::string const url, std::string const body);
     };
 
-    class call {
-    };
+    Client client;
 
-    class verify {
+public:
+    Nexmo () {};
+    Nexmo (std::string key, std::string secret) {
+        this->key = key;
+        this->secret = secret;
     };
 
     void sendSms(std::string sender, std::string recipient, std::string message);
