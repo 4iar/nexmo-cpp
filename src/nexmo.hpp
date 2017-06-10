@@ -1,8 +1,10 @@
+#pragma once
+
 #include <string>
 
 
 class Nexmo {
-public:
+private:
     // API credentials
     std::string key;
     std::string secret;
@@ -18,4 +20,6 @@ public:
 
     class verify {
     };
+
+    void sendSms(std::string sender, std::string recipient, std::string message);
 };
