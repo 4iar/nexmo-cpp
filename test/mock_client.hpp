@@ -6,5 +6,5 @@
 
 class MockClient : public Client {
 public:
-    MOCK_METHOD2(post, void(std::string const url, std::string const body));
+    MOCK_METHOD2(post, std::string(std::string const url, std::string const body));
 };

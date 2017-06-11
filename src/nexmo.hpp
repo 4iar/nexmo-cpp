@@ -23,5 +23,5 @@ public:
         this->secret = secret;
         this->client = new_client;
     };
-    void sendSms(std::string sender, std::string recipient, std::string message);
+    std::string sendSms(std::string sender, std::string recipient, std::string message);
 };
