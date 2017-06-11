@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
@@ -9,9 +10,7 @@
 #include "../nexmo.hpp"
 
 
-void Client::post (std::string const url, std::string const body) {
-
-
+std::string Client::post (std::string const url, std::string const body) {
     curlpp::Easy request;
 
     request.setOpt(new curlpp::options::Url(url));
@@ -25,5 +24,11 @@ void Client::post (std::string const url, std::string const body) {
     request.setOpt(new curlpp::options::PostFields(body));
     request.setOpt(new curlpp::options::PostFieldSize(body.length()));
 
+    // Configure the storing of the response
+    std::stringstream response;
+    request.setOpt(curlpp::options::WriteStream(&response));
+
     request.perform();
+
+    return response.str();
 }
