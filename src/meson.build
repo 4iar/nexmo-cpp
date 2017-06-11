@@ -1,4 +1,4 @@
-project('nexmo-cpp', 'cpp')
+project('nexmo-cpp', 'cpp', default_options : ['cpp_std=c++11'])
 
 gtest = dependency('gtest')
 gmock = dependency('gmock')

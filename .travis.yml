@@ -1,0 +1,19 @@
+sudo: false
+
+os:
+  - linux
+
+language:
+  - cpp
+
+services:
+  - docker
+
+before_install:
+  - docker pull fedora:25
+
+script:
+  - echo FROM fedora > Dockerfile
+  - echo ADD . /root >> Dockerfile
+  - docker build -t withgit .
+  - docker run withgit /bin/sh -c "dnf -y install gtest-devel gmock-devel curlpp-devel gcc-c++ git meson redhat-rpm-config && cd /root && TRAVIS=true CC=$CC CXX=$CXX /usr/bin/meson src build && ninja-build -C build test"
