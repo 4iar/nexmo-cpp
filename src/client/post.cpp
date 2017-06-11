@@ -5,10 +5,12 @@
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 
+#include "../client.hpp"
 #include "../nexmo.hpp"
 
 
-void Nexmo::Client::post (std::string const url, std::string const body) {
+void Client::post (std::string const url, std::string const body) {
+
 
     curlpp::Easy request;
 

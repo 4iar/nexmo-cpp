@@ -1,5 +1,6 @@
 #include "json.hpp"
 
+#include "../client.hpp"
 #include "../nexmo.hpp"
 
 
@@ -17,5 +18,5 @@ void Nexmo::sendSms(std::string sender, std::string recipient, std::string messa
     std::string url = "https://rest.nexmo.com/sms/json";
 
 
-    this->client.post(url, body.dump());
+    this->client->post(url, body.dump());
 };
