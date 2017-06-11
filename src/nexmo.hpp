@@ -16,6 +16,7 @@ public:
     Nexmo (std::string key, std::string secret) {
         this->key = key;
         this->secret = secret;
+        this->client = new Client;
     };
     Nexmo (std::string key, std::string secret, Client* new_client) {
         this->key = key;
